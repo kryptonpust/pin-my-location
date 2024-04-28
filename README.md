@@ -7,6 +7,38 @@ Pin My Location is a React Native application that allows users to save their fa
 - Pin locations on a map
 - Add custom labels and descriptions to each pinned location
 - View a list of all pinned locations
+- Use Flipper for debugging and performance analysis
+
+## Android Custom Setup
+
+To set up the Pin My Location app for Android, follow these steps:
+
+1. Open the `android/app/build.gradle` file in your project.
+    Add the following line of code to the end of the apply plugin section:
+
+    ```groovy
+    apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+    ```
+
+2. Save the file.
+
+## Flipper Setup
+
+To use Flipper for debugging and performance analysis, follow these steps:
+
+1. Open the `android/build.gradle` file in your project.
+2. Locate the `buildscript` block.
+3. Inside the `buildscript` block, add the following line of code:
+
+    ```groovy
+    ext {
+          FLIPPER_VERSION = '0.240.0'
+    }
+    ```
+
+4. Save the file.
+
+By adding the `FLIPPER_VERSION` variable with the value `'0.240.0'`, you will be able to use Flipper for debugging and performance analysis in your React Native application.
 
 ## Installation
 
