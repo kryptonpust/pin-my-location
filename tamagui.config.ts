@@ -3,7 +3,8 @@ import { createInterFont } from '@tamagui/font-inter';
 import { createMedia } from '@tamagui/react-native-media-driver';
 import { shorthands } from '@tamagui/shorthands';
 import { themes, tokens } from '@tamagui/themes';
-import { createTamagui, styled, SizableText, H1, YStack } from 'tamagui';
+import { opacity } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+import { createTamagui, styled, SizableText, H1, YStack, Button } from 'tamagui';
 
 const animations = createAnimations({
   bouncy: {

@@ -5,10 +5,11 @@ import { TamaguiProvider } from 'tamagui';
 
 import config from '../tamagui.config';
 
+import { useAppSettingsStore } from '~/utils/store';
+
 SplashScreen.preventAutoHideAsync();
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: '(tabs)',
 };
 
@@ -17,6 +18,8 @@ export default function RootLayout() {
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   });
+
+  const theme = useAppSettingsStore((state) => state.settings.theme);
 
   useEffect(() => {
     if (loaded) {
@@ -27,10 +30,9 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <TamaguiProvider config={config}>
+    <TamaguiProvider config={config} defaultTheme={theme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </TamaguiProvider>
   );

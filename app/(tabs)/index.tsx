@@ -1,14 +1,16 @@
-import { Stack } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
-
-import { ScreenContent } from '~/components/ScreenContent';
+import { MapScreenContent } from '~/components/map_page/MapScreenContent';
 
 export default function Home() {
+  const { id } = useLocalSearchParams<{
+    id: string;
+  }>();
   return (
     <>
-      <Stack.Screen options={{ title: 'Tab One' }} />
+      <Stack.Screen options={{ title: 'Map', }} />
       <View style={styles.container}>
-        <ScreenContent path="app/(tabs)/index.tsx" title="Tab One" />
+        <MapScreenContent id={id} />
       </View>
     </>
   );

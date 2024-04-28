@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
+import { Button as ButtonTamagui, styled } from 'tamagui';
 
-import { Button as TButton, ButtonText } from '../tamagui.config';
-
-export const Button = forwardRef<TouchableOpacity, ButtonProps>(({ onPress, title }, ref) => {
-  return (
-    <TButton onPress={onPress}>
-      <ButtonText>{title}</ButtonText>
-    </TButton>
-  );
+export const Button = styled(ButtonTamagui, {
+  variants: {
+    disabled: {
+      true: {
+        opacity: 0.5,
+      },
+    },
+  },
 });

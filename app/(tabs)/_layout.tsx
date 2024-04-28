@@ -1,31 +1,38 @@
-import { Link, Tabs } from 'expo-router';
-
-import { HeaderButton } from '../../components/HeaderButton';
-import { TabBarIcon } from '../../components/TabBarIcon';
+import { Tabs } from 'expo-router';
+import { useTheme } from 'tamagui';
+import { Map, MapPin } from '@tamagui/lucide-icons';
+import { ThemeSwitchButton } from '~/components/ThemeSwitchButton';
 
 export default function TabLayout() {
+  // return <Slot />;
+  const theme = useTheme();
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: theme.color10.get(),
+        tabBarActiveTintColor: theme.color.get(),
+        tabBarStyle: {
+          backgroundColor: theme.background.get(),
+        },
+        headerStyle: {
+          backgroundColor: theme.green8.get(),
+        },
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <HeaderButton />
-            </Link>
-          ),
+          title: 'Map',
+          tabBarIcon: ({ color }) => <Map color={color} />,
+          headerRight: () => <ThemeSwitchButton />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="pins"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Saved Pins',
+          tabBarIcon: ({ color }) => <MapPin color={color} />,
+          headerRight: () => <ThemeSwitchButton />,
         }}
       />
     </Tabs>
